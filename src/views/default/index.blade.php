@@ -1,7 +1,6 @@
 @extends('crudbooster::admin_template')
 
 @section('content')
-
     @if($index_statistic)
         <div id='box-statistic' class='row'>
             @foreach($index_statistic as $stat)
@@ -56,12 +55,12 @@
         </div>
     @endif
 
-    <div class="box">
+    <div class="box box-default" style="border-radius: 15px;">
         <div class="box-header">
             @if($button_bulk_action && ( ($button_delete && CRUDBooster::isDelete()) || $button_selected) )
                 <div class="pull-{{ cbLang('left') }}">
                     <div class="selected-action" style="display:inline-block;position:relative;">
-                        <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i
+                        <button type="button" style="border-radius: 7px;" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i
                                     class='fa fa-check-square-o'></i> {{cbLang("button_selected_action")}}
                             <span class="fa fa-caret-down"></span></button>
                         <ul class="dropdown-menu">
@@ -81,10 +80,10 @@
                     </div><!--end-selected-action-->
                 </div><!--end-pull-left-->
             @endif
-            <div class="box-tools pull-{{ cbLang('right') }}" style="position: relative;margin-top: -5px;margin-right: -10px">
+            <div class="box-tools pull-{{ cbLang('right') }}" style="position: relative;margin-top: -5px;margin-right: -10px;">
 
                 @if($button_filter)
-                    <a style="margin-top:-23px" href="javascript:void(0)" id='btn_advanced_filter' data-url-parameter='{{$build_query}}'
+                    <a style="margin-top:-23px; border-radius: 7px;" href="javascript:void(0)" id='btn_advanced_filter' data-url-parameter='{{$build_query}}'
                        title='{{cbLang('filter_dialog_title')}}' class="btn btn-sm btn-default {{(Request::get('filter_column'))?'active':''}}">
                         <i class="fa fa-filter"></i> {{cbLang("button_filter")}}
                     </a>
@@ -92,7 +91,7 @@
 
                 <form method='get' style="display:inline-block;width: 260px;" action='{{Request::url()}}'>
                     <div class="input-group">
-                        <input type="text" name="q" value="{{ Request::get('q') }}" class="form-control input-sm pull-{{ cbLang('right') }}"
+                        <input type="text" name="q" style="border-top-left-radius: 7px; border-bottom-left-radius: 7px;" value="{{ Request::get('q') }}" class="form-control input-sm pull-{{ cbLang('right') }}"
                                placeholder="{{cbLang('filter_search')}}"/>
                         {!! CRUDBooster::getUrlParameters(['q']) !!}
                         <div class="input-group-btn">
@@ -107,7 +106,7 @@
                                 <button type='button' onclick='location.href="{{ CRUDBooster::mainpath().$build_query}}"'
                                         title="{{cbLang('button_reset')}}" class='btn btn-sm btn-warning'><i class='fa fa-ban'></i></button>
                             @endif
-                            <button type='submit' class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+                            <button type='submit' class="btn btn-sm btn-default" style="border-top-right-radius: 7px; border-bottom-right-radius: 7px;"><i class="fa fa-search"></i></button>
                         </div>
                     </div>
                 </form>
@@ -116,7 +115,7 @@
                 <form method='get' id='form-limit-paging' style="display:inline-block" action='{{Request::url()}}'>
                     {!! CRUDBooster::getUrlParameters(['limit']) !!}
                     <div class="input-group">
-                        <select onchange="$('#form-limit-paging').submit()" name='limit' style="width: 56px;" class='form-control input-sm'>
+                        <select onchange="$('#form-limit-paging').submit()" name='limit' style="width: 56px; border-radius: 7px;" class='form-control input-sm'>
                             <option {{($limit==5)?'selected':''}} value='5'>5</option>
                             <option {{($limit==10)?'selected':''}} value='10'>10</option>
                             <option {{($limit==20)?'selected':''}} value='20'>20</option>

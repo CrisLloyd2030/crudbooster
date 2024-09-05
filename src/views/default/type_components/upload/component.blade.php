@@ -30,7 +30,7 @@
             @endif
         @endif
         @if(!$value)
-            <input type='file' id="{{$name}}" title="{{$form['label']}}" {{$required}} {{$readonly}} {{$disabled}} class='form-control' name="{{$name}}"/>
+            <input type='file' style="border-radius: 7px;" id="{{$name}}" title="{{$form['label']}}" {{$required}} {{$readonly}} {{$disabled}} class='form-control' name="{{$name}}"/>
             <p class='help-block'>{{ @$form['help'] }}</p>
         @else
             <p class='text-muted'><em>{{cbLang("notice_delete_file_upload")}}</em></p>

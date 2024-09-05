@@ -1,8 +1,8 @@
 @if($command=='layout')
     <div id='{{$componentID}}' class='border-box'>
 
-        <div class="panel panel-default">
-            <div class="panel-heading">
+        <div class="panel panel-default" style="border-radius: 15px;">
+            <div class="panel-heading" style="border-radius: 15px; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px;">
                 [name]
             </div>
             <div class="panel-body table-responsive no-padding">
@@ -51,11 +51,13 @@
     ?>
 
     @if($sql)
-        <table class='table table-striped'>
+    
+    <div style="margin:0px 10px 0px 10px; border-radius: 7px; border: 0px solid #ccc; padding: 10px;">
+        <table class='table table-hover table-bordered' style="text-align: center; border-radius: 7px; border: solid 1px lightgrey; overflow: hidden; text-align:center">
             <thead>
             <tr>
                 @foreach($sql[0] as $key=>$val)
-                    <th>{{$key}}</th>
+                    <th style="text-transform:capitalize; color: #0492C2; text-align:center; border-bottom: 1px;">{{$key}}</th>
                 @endforeach
             </tr>
             </thead>
@@ -63,12 +65,13 @@
             @foreach($sql as $row)
                 <tr>
                     @foreach($row as $key=>$val)
-                        <td>{{$val}}</td>
+                        <td style="border-color:#ccc">{{$val}}</td>
                     @endforeach
                 </tr>
             @endforeach
             </tbody>
         </table>
+    </div>
         <script type="text/javascript">
             $('table.table').DataTable({
                 dom: "<'row'<'col-sm-6'l><'col-sm-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-5'i><'col-sm-7'p>>",

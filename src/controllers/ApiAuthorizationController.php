@@ -16,7 +16,7 @@ class ApiAuthorizationController extends Controller
         CB::valid(['secret'=>'required'],'json');
 
         $exists = db("cms_apikey")
-            ->where("screetkey", g("secret"))
+            ->where("secretkey", g("secret"))
             ->where("status","active")
             ->count();
         if($exists) {

@@ -7,7 +7,7 @@
     </label>
 
     <div class="{{$col_width?:'col-sm-10'}}">
-        <input type='text' title="{{$form['label']}}"
+        <input type='text' style="border-radius: 7px;" title="{{$form['label']}}"
                {{$required}} {{$readonly}} {!!$placeholder!!} {{$disabled}} {{$validation['max']?"maxlength=".$validation['max']:""}} class='form-control'
                name="{{$name}}" id="{{$name}}" value='{{$value}}'/>
 

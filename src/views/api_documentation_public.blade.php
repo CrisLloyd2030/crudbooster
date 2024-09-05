@@ -161,7 +161,7 @@
                     <tr>
                         <td><?= ++$no;?></td>
                         <td>
-                            <a href='javascript:void(0)' title='API {{$ac->nama}}' style='color:#009fe3' class='link_name_api'><?=$api->nama;?></a> &nbsp;
+                            <a href='javascript:void(0)' title='API {{$ac->name}}' style='color:#009fe3' class='link_name_api'><?=$api->name;?></a> &nbsp;
                             <div class='detail_api' style='display:none'>
                                 <table class='table table-bordered'>
                                     <tr>
@@ -263,7 +263,7 @@
                                                     <td>api_message</td>
                                                 </tr>
 
-                                                @if($api->aksi == 'list')
+                                                @if($api->action == 'list')
                                                     <tr class='active'>
                                                         <td>{{ ++$i }}</td>
                                                         <td>Array</td>
@@ -271,7 +271,7 @@
                                                     </tr>
                                                 @endif
 
-                                                @if($api->aksi == 'detail')
+                                                @if($api->action == 'detail')
                                                     <tr class='active'>
                                                         <td>{{ ++$i }}</td>
                                                         <td>Object</td>
@@ -280,19 +280,19 @@
                                                 @endif
 
                                                 @php $e = 0; @endphp
-                                                @if($api->aksi == 'list' || $api->aksi == 'detail')
+                                                @if($api->action == 'list' || $api->action == 'detail')
                                                     @foreach($responses as $resp)
                                                         @if($resp['used'])
                                                             <tr>
                                                                 <td>{{$i.".".(++$e)}}</td>
                                                                 <td width="5%"><em>{{$resp['type']}}</em></td>
-                                                                <td>{{ ($api->aksi=='list')?'- ':'' }} {{$resp['name']}}</td>
+                                                                <td>{{ ($api->action=='list')?'- ':'' }} {{$resp['name']}}</td>
                                                             </tr>
                                                         @endif
                                                     @endforeach
                                                 @endif
 
-                                                @if($api->aksi == 'save_add')
+                                                @if($api->action == 'save_add')
                                                     <tr>
                                                         <td width="5%">{{ ++$i }}</td>
                                                         <td><em>integer</em></td>
@@ -306,7 +306,7 @@
                                     </tr>
                                     <tr>
                                         <td><strong>DESCRIPTION</strong></td>
-                                        <td><em>{!! $api->keterangan !!}</em></td>
+                                        <td><em>{!! $api->information !!}</em></td>
                                     </tr>
                                 </table>
                             </div>

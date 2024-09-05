@@ -60,7 +60,7 @@
 
             <div class='form-group'>
                 <label>API BASE URL</label>
-                <input type='text' readonly class='form-control' title='Hanya klik dan otomatis copy to clipboard (kecuali Safari)'
+                <input type='text' style="border-radius: 7px;" readonly class='form-control' title='Hanya klik dan otomatis copy to clipboard (kecuali Safari)'
                        onClick="this.setSelectionRange(0, this.value.length); document.execCommand('copy');" value='{{url('api')}}'/>
             </div>
 
@@ -176,7 +176,7 @@
                     <tr>
                         <td><?= ++$no;?></td>
                         <td>
-                            <a href='javascript:void(0)' title='API {{$ac->nama}}' style='color:#009fe3' class='link_name_api'><?=$api->nama;?></a> &nbsp;
+                            <a href='javascript:void(0)' title='API {{$ac->name}}' style='color:#009fe3' class='link_name_api'><?=$api->name;?></a> &nbsp;
                             <sup>
                                 <a title='Delete this API' onclick="deleteApi({{$api->id}})" href="javascript:void(0)"><i class='fa fa-trash'></i></a>
                                 &nbsp; <a title='Edit This API' href="{{url(config('crudbooster.ADMIN_PATH').'/api_generator/edit-api').'/'.$api->id}}"><i
@@ -283,7 +283,7 @@
                                                     <td>api_message</td>
                                                 </tr>
 
-                                                @if($api->aksi == 'list')
+                                                @if($api->action == 'list')
                                                     <tr class='active'>
                                                         <td>{{ ++$i }}</td>
                                                         <td>Array</td>
@@ -291,7 +291,7 @@
                                                     </tr>
                                                 @endif
 
-                                                @if($api->aksi == 'detail')
+                                                @if($api->action == 'detail')
                                                     <tr class='active'>
                                                         <td>{{ ++$i }}</td>
                                                         <td>Object</td>
@@ -301,19 +301,19 @@
 
                                                 @php $ii = 0; @endphp
 
-                                                @if($api->aksi == 'list' || $api->aksi == 'detail')
+                                                @if($api->action == 'list' || $api->action == 'detail')
                                                     @foreach($responses as $resp)
                                                         @if($resp['used'])
                                                             <tr>
                                                                 <td>{{$i.".".(++$ii)}}</td>
                                                                 <td width="5%"><em>{{$resp['type']}}</em></td>
-                                                                <td>{{ ($api->aksi=='list')?'- ':'' }} {{$resp['name']}}</td>
+                                                                <td>{{ ($api->action=='list')?'- ':'' }} {{$resp['name']}}</td>
                                                             </tr>
                                                         @endif
                                                     @endforeach
                                                 @endif
 
-                                                @if($api->aksi == 'save_add')
+                                                @if($api->action == 'save_add')
                                                     <tr>
                                                         <td width="5%">{{ ++$i }}</td>
                                                         <td><em>integer</em></td>
@@ -327,7 +327,7 @@
                                     </tr>
                                     <tr>
                                         <td><strong>DESCRIPTION</strong></td>
-                                        <td><em>{!! $api->keterangan !!}</em></td>
+                                        <td><em>{!! $api->information !!}</em></td>
                                     </tr>
                                 </table>
                             </div>

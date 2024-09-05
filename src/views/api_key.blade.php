@@ -16,7 +16,7 @@
             <p><a title='Generate API Key' class='btn btn-primary' href='javascript:void(0)' onclick='generate_screet_key()'><i class='fa fa-key'></i> Generate
                     Secret Key</a></p>
 
-            <table id='table-apikey' class='table table-striped table-bordered'>
+            <table id='table-apikey' class='table table-striped table-bordered' style="border-radius: 7px;">
                 <thead>
                 <tr>
                     <th width="3%">No</th>
@@ -31,7 +31,7 @@
                 @foreach($apikeys as $row)
                     <tr>
                         <td>{{ ++$no }}</td>
-                        <td>{{ $row->screetkey }}</td>
+                        <td>{{ $row->secretkey }}</td>
                         <td>{{ $row->hit }}</td>
                         <td>{!! ($row->status=='active')?"<span class='label label-success'>Active</span>":"<span class='label label-default'>Non Active</span>" !!}</td>
                         <td>

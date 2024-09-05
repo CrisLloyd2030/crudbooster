@@ -1,8 +1,8 @@
 @if($command=='layout')
     <div id='{{$componentID}}' class='border-box'>
 
-        <div class="panel panel-default">
-            <div class="panel-heading">
+        <div class="panel panel-default" style="border-radius: 15px;">
+            <div class="panel-heading" style="border-radius: 15px; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px;">
                 [name]
             </div>
             <div class="panel-body">

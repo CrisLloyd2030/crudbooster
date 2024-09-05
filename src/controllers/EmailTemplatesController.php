@@ -49,7 +49,6 @@ class EmailTemplatesController extends \crocodicstudio\crudbooster\controllers\C
             "name" => "from_name",
             "type" => "text",
             "required" => false,
-            "width" => "col-sm-6",
             'placeholder' => 'Optional',
         ];
         $this->form[] = [
@@ -58,7 +57,6 @@ class EmailTemplatesController extends \crocodicstudio\crudbooster\controllers\C
             "type" => "email",
             "required" => false,
             "validation" => "email",
-            "width" => "col-sm-6",
             'placeholder' => 'Optional',
         ];
 

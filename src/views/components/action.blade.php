@@ -52,10 +52,18 @@
         }
 
         @eval("if($query) {
-          echo \"<a class='btn btn-xs btn-\$color' title='\$title' onclick='\$confirm_box' href='\$url' target='\$target'><i class='\$icon'></i> $label</a>&nbsp;\";
+          echo \"<a class='btn btn-xs btn-\$color'
+                style='display: inline-block; border-radius:7px; border:none; text-decoration: none; transition: background-color 0.3s ease, transform 0.3s ease;'
+                onmouseover='this.style.transform='translateY(-3px)';'
+                onmouseout='this.style.transform='translateY(0)';'s
+                title='\$title' onclick='\$confirm_box' href='\$url' target='\$target'><i class='\$icon'></i> $label</a>&nbsp;\";
       }");
     } else {
-        echo "<a class='btn btn-xs btn-$color' title='$title' onclick='$confirm_box' href='$url' target='$target'><i class='$icon'></i> $label</a>&nbsp;";
+        echo "<a class='btn btn-xs btn-$color' 
+                style='display: inline-block; border-radius:7px; border:none; text-decoration: none; transition: background-color 0.3s ease, transform 0.3s ease;'
+                onmouseover='this.style.transform='translateY(-3px)';'
+                onmouseout='this.style.transform='translateY(0)';'s
+                title='$title' onclick='$confirm_box' href='$url' target='$target'><i class='$icon'></i> $label</a>&nbsp;";
     }
     ?>
 @endforeach
@@ -158,19 +166,37 @@
 @else
 
     @if(CRUDBooster::isRead() && $button_detail)
-        <a class='btn btn-xs btn-primary btn-detail' title='{{cbLang("action_detail_data")}}'
+        <a class='btn btn-xs btn-primary btn-detail' 
+        
+        style="display: inline-block; border-radius:7px; border:none; text-decoration: none; transition: background-color 0.3s ease, transform 0.3s ease;"
+        onmouseover="this.style.transform='translateY(-3px)';"
+        onmouseout="this.style.transform='translateY(0)';"
+
+        title='{{cbLang("action_detail_data")}}'
            href='{{CRUDBooster::mainpath("detail/".$row->$pk)."?return_url=".urlencode(Request::fullUrl())}}'><i class='fa fa-eye'></i></a>
     @endif
 
     @if(CRUDBooster::isUpdate() && $button_edit)
-        <a class='btn btn-xs btn-success btn-edit' title='{{cbLang("action_edit_data")}}'
+        <a class='btn btn-xs btn-success btn-edit' 
+        
+        style="display: inline-block; border-radius:7px; border:none; text-decoration: none; transition: background-color 0.3s ease, transform 0.3s ease;"
+        onmouseover="this.style.transform='translateY(-3px)';"
+        onmouseout="this.style.transform='translateY(0)';"
+
+        title='{{cbLang("action_edit_data")}}'
            href='{{CRUDBooster::mainpath("edit/".$row->$pk)."?return_url=".urlencode(Request::fullUrl())."&parent_id=".g("parent_id")."&parent_field=".$parent_field}}'><i
                     class='fa fa-pencil'></i></a>
     @endif
 
     @if(CRUDBooster::isDelete() && $button_delete)
         <?php $url = CRUDBooster::mainpath("delete/".$row->$pk);?>
-        <a class='btn btn-xs btn-warning btn-delete' title='{{cbLang("action_delete_data")}}' href='javascript:;'
+        <a class='btn btn-xs btn-warning btn-delete' 
+        
+        style="display: inline-block; border-radius:7px; border:none; text-decoration: none; transition: background-color 0.3s ease, transform 0.3s ease;"
+        onmouseover="this.style.transform='translateY(-3px)';"
+        onmouseout="this.style.transform='translateY(0)';"
+
+        title='{{cbLang("action_delete_data")}}' href='javascript:;'
            onclick='{{CRUDBooster::deleteConfirm($url)}}'><i class='fa fa-trash'></i></a>
     @endif
 

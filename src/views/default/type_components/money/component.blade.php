@@ -6,7 +6,7 @@
     </label>
 
     <div class="{{$col_width?:'col-sm-10'}}">
-        <input type="text" title="{{$form['label']}}" {{$required}} {{$readonly}} {!!$placeholder!!} {{$disabled}} class="form-control inputMoney"
+        <input type="text" style="border-radius: 7px;" title="{{$form['label']}}" {{$required}} {{$readonly}} {!!$placeholder!!} {{$disabled}} class="form-control inputMoney"
                name="{{$name}}" id="{{$name}}" value="{{$value}}">
         <div class="text-danger">{!! $errors->first($name)?'<i class="fa fa-info-circle"></i> '.$errors->first($name):'' !!}</div>
         <p class="help-block">{{ @$form['help'] }}</p>

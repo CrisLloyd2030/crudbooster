@@ -408,7 +408,7 @@
 
     <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
-            <div class="modal-content">
+            <div class="modal-content" style="border-radius: 7px;">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title"><i class='fa fa-cog'></i> Options</h4>
@@ -449,17 +449,17 @@
                     <?php $index = 0;?>
                     @foreach($cb_form as $form)
                         <tr>
-                            <td><input type='text' value='{{$form["label"]}}' placeholder="Input field label" onclick='showColumnSuggest(this)'
+                            <td><input style="border-radius: 7px;" type='text' value='{{$form["label"]}}' placeholder="Input field label" onclick='showColumnSuggest(this)'
                                        onkeyup="showColumnSuggestLike(this)" class='form-control labels' name='label[]'/></td>
-                            <td><input type='text' value='{{$form["name"]}}' placeholder="Input field name" onclick='showNameSuggest(this)'
+                            <td><input style="border-radius: 7px;" type='text' value='{{$form["name"]}}' placeholder="Input field name" onclick='showNameSuggest(this)'
                                        onkeyup="showNameSuggestLike(this)" class='form-control name' name='name[]'/></td>
-                            <td><input type='text' value='{{$form["type"]?:"text"}}' placeholder="Input field type" onclick='showTypeSuggest(this)'
+                            <td><input style="border-radius: 7px;" type='text' value='{{$form["type"]?:"text"}}' placeholder="Input field type" onclick='showTypeSuggest(this)'
                                        onkeyup="showTypeSuggestLike(this)" class='form-control type' name='type[]'/></td>
-                            <td><input type='text' value='{{$form["validation"]}}' class='form-control validation' onclick="showValidationSuggest(this)"
+                            <td><input style="border-radius: 7px;" type='text' value='{{$form["validation"]}}' class='form-control validation' onclick="showValidationSuggest(this)"
                                        onkeyup="showValidationSuggestLike(this)" name='validation[]' value='required' placeholder='Enter Laravel Validation'/>
                             </td>
                             <td>
-                                <select class='form-control width' name='width[]'>
+                                <select style="border-radius: 7px;" class='form-control width' name='width[]'>
                                     @for($i=10;$i>=1;$i--)
                                         <option {{ ($form['width'] == "col-sm-$i")?"selected":"" }} value='col-sm-{{$i}}'>{{$i}}</option>
                                     @endfor
@@ -505,7 +505,7 @@
 
                                     <div class="form-group">
                                         <label>{{$key}}</label>
-                                        <input type="text" name="option[{{$index}}][{{$key}}]" placeholder="{{$val->placeholder}}" value="{{$value}}"
+                                        <input type="text" style="border-radius: 7px;" name="option[{{$index}}][{{$key}}]" placeholder="{{$val->placeholder}}" value="{{$value}}"
                                                class="form-control">
                                     </div>
                                     <?php endif;?>
@@ -513,7 +513,7 @@
 
                                     <div class="form-group">
                                         <label>{{$key}}</label>
-                                        <input type="text" name="option[{{$index}}][{{$key}}]" placeholder="{{$val}}" value="{{$value}}" class="form-control">
+                                        <input type="text" style="border-radius: 7px;" name="option[{{$index}}][{{$key}}]" placeholder="{{$val}}" value="{{$value}}" class="form-control">
                                     </div>
 
                                     <?php endif;?>
@@ -528,7 +528,7 @@
                                     ?>
                                     <div class="form-group">
                                         <label>{{$key}}</label>
-                                        <input type="text" name="option[{{$index}}][{{$key}}]" placeholder="{{$val}}" value="{{$value}}" class="form-control">
+                                        <input type="text" style="border-radius: 7px;" name="option[{{$index}}][{{$key}}]" placeholder="{{$val}}" value="{{$value}}" class="form-control">
                                     </div>
                                     <?php endforeach; endif;?>
 
@@ -541,10 +541,10 @@
                                     <div class="form-group">
                                         <label>{{$key}}</label>
                                         @if(is_object($val) && property_exists($val, 'type') && $val->type == 'textarea')
-                                            <textarea type="text" name="option[{{$index}}][{{$key}}]" placeholder="{{$val->placeholder}}"
+                                            <textarea type="text" style="border-radius: 7px;" name="option[{{$index}}][{{$key}}]" placeholder="{{$val->placeholder}}"
                                                       class="form-control">{{$value}}</textarea>
                                         @else
-                                            <input type="text" name="option[{{$index}}][{{$key}}]" placeholder="{{$val}}" value="{{$value}}"
+                                            <input type="text" style="border-radius: 7px;" name="option[{{$index}}][{{$key}}]" placeholder="{{$val}}" value="{{$value}}"
                                                    class="form-control">
                                         @endif
                                     </div>
@@ -565,16 +565,16 @@
                     @endforeach
 
                     <tr id='tr-sample' style="display: none">
-                        <td><input type='text' placeholder="Input field label" onclick='showColumnSuggest(this)' onkeyup="showColumnSuggestLike(this)"
+                        <td><input style="border-radius: 7px;" type='text' placeholder="Input field label" onclick='showColumnSuggest(this)' onkeyup="showColumnSuggestLike(this)"
                                    class='form-control labels' name='label[]'/></td>
-                        <td><input type='text' placeholder="Input field name" onclick='showNameSuggest(this)' onkeyup="showNameSuggestLike(this)"
+                        <td><input style="border-radius: 7px;" type='text' placeholder="Input field name" onclick='showNameSuggest(this)' onkeyup="showNameSuggestLike(this)"
                                    class='form-control name' name='name[]'/></td>
-                        <td><input type='text' placeholder="Input field type" onclick='showTypeSuggest(this)' onkeyup="showTypeSuggestLike(this)"
+                        <td><input style="border-radius: 7px;" type='text' placeholder="Input field type" onclick='showTypeSuggest(this)' onkeyup="showTypeSuggestLike(this)"
                                    class='form-control type' name='type[]'/></td>
-                        <td><input type='text' class='form-control validation' onclick="showValidationSuggest(this)" onkeyup="showValidationSuggestLike(this)"
+                        <td><input style="border-radius: 7px;" type='text' class='form-control validation' onclick="showValidationSuggest(this)" onkeyup="showValidationSuggestLike(this)"
                                    name='validation[]' value='required' placeholder='Enter Laravel Validation'/></td>
                         <td>
-                            <select class='form-control width' name='width[]'>
+                            <select style="border-radius: 7px;" class='form-control width' name='width[]'>
                                 @for($i=10;$i>=1;$i--)
                                     <option {{ ($i==9)?"selected":"" }} value='col-sm-{{$i}}'>{{$i}}</option>
                                 @endfor

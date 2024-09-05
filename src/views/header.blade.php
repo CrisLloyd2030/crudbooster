@@ -1,5 +1,45 @@
+<style>
+    .sidebar-toggle {
+        display: inline-block;
+        transition: transform 0.4s ease;
+        padding: 10px;
+        background-color: #007bff;
+        border-radius: 0px;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    /* Rotation effect */
+    .rotate {
+        transform: rotate(360deg);
+    }
+
+    @keyframes shake {
+
+        0%,
+        100% {
+            transform: translateX(0);
+        }
+
+        20%,
+        60% {
+            transform: translateX(-10px);
+        }
+
+        40%,
+        80% {
+            transform: translateX(10px);
+        }
+    }
+
+    .shake {
+        animation: shake 0.5s;
+        animation-fill-mode: forwards;
+    }
+</style>
+
 <!-- Main Header -->
-<header class="main-header">
+<header class="main-header" style="position: fixed; width: 100%">
 
     <!-- Logo -->
     <a href="{{url(config('crudbooster.ADMIN_PATH'))}}" title='{{Session::get('appname')}}' class="logo">{{CRUDBooster::getSetting('appname')}}</a>
@@ -15,12 +55,12 @@
             <ul class="nav navbar-nav">
 
                 <li class="dropdown notifications-menu">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" title='Notifications' aria-expanded="false">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" title='Notifications' aria-expanded="false" id="notification_bell">
                         <i id='icon_notification' class="fa fa-bell-o"></i>
                         <span id='notification_count' class="label label-danger" style="display:none">0</span>
                     </a>
-                    <ul id='list_notifications' class="dropdown-menu">
-                        <li class="header">{{cbLang("text_no_notification")}}</li>
+                    <ul id='list_notifications' class="dropdown-menu" style="margin-top: 10px; border-radius: 10px;">
+                        <li class="header" style="border-top-left-radius:7px; border-top-right-radius: 7px;">{{cbLang("text_no_notification")}}</li>
                         <li>
                             <!-- inner menu: contains the actual data -->
                             <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 200px;">
@@ -33,12 +73,12 @@
 
                                 </ul>
                                 <div class="slimScrollBar"
-                                     style="width: 3px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 195.122px; background: rgb(0, 0, 0);"></div>
+                                    style="width: 3px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 195.122px; background: rgb(0, 0, 0);"></div>
                                 <div class="slimScrollRail"
-                                     style="width: 3px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(51, 51, 51);"></div>
+                                    style="width: 3px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(51, 51, 51);"></div>
                             </div>
                         </li>
-                        <li class="footer"><a href="{{route('NotificationsControllerGetIndex')}}">{{cbLang("text_view_all_notification")}}</a></li>
+                        <li class="footer" style="border-bottom-left-radius:7px; border-bottom-right-radius: 7px;"><a href="{{route('NotificationsControllerGetIndex')}}">{{cbLang("text_view_all_notification")}}</a></li>
                     </ul>
                 </li>
 
@@ -47,29 +87,29 @@
                     <!-- Menu Toggle Button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <!-- The user image in the navbar-->
-                        <img src="{{ CRUDBooster::myPhoto() }}" class="user-image" alt="User Image"/>
+                        <img src="{{ CRUDBooster::myPhoto() }}" class="user-image" alt="User Image" />
                         <!-- hidden-xs hides the username on small devices so only the image appears. -->
                         <span class="hidden-xs">{{ CRUDBooster::myName() }}</span>
                     </a>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu" style="margin-top: 10px; margin-right: 10px; border-radius: 7px;">
                         <!-- The user image in the menu -->
-                        <li class="user-header">
-                            <img src="{{ CRUDBooster::myPhoto() }}" class="img-circle" alt="User Image"/>
+                        <li class="user-header" style="border-top-left-radius: 7px; border-top-right-radius: 7px;">
+                            <img src="{{ CRUDBooster::myPhoto() }}" class="img-circle" alt="User Image" />
                             <p>
                                 {{ CRUDBooster::myName() }}
                                 <small>{{ CRUDBooster::myPrivilegeName() }}</small>
-                                <small><em><?php echo date('d F Y')?></em></small>
+                                <small><em><?php echo date('d F Y') ?></em></small>
                             </p>
                         </li>
 
                         <!-- Menu Footer-->
-                        <li class="user-footer">
+                        <li class="user-footer" style="border-bottom-right-radius: 7px; border-bottom-left-radius: 7px;">
                             <div class="pull-{{ cbLang('left') }}">
-                                <a href="{{ route('AdminCmsUsersControllerGetProfile') }}" class="btn btn-default btn-flat"><i
-                                            class='fa fa-user'></i> {{cbLang("label_button_profile")}}</a>
+                                <a href="{{ route('AdminCmsUsersControllerGetProfile') }}" class="btn btn-default btn-flat" style="border-radius: 7px;"><i
+                                        class='fa fa-user'></i> {{cbLang("label_button_profile")}}</a>
                             </div>
                             <div class="pull-{{ cbLang('right') }}">
-                                <a title='Lock Screen' href="{{ route('getLockScreen') }}" class='btn btn-default btn-flat'><i class='fa fa-key'></i></a>
+                                <a title='Lock Screen' href="{{ route('getLockScreen') }}" class='btn btn-default btn-flat' style="border-radius: 7px;"><i class='fa fa-key'></i></a>
                                 <a href="javascript:void(0)" onclick="swal({
                                         title: '{{cbLang('alert_want_to_logout')}}',
                                         type:'info',
@@ -82,7 +122,7 @@
                                         }, function(){
                                         location.href = '{{ route("getLogout") }}';
 
-                                        });" title="{{cbLang('button_logout')}}" class="btn btn-danger btn-flat"><i class='fa fa-power-off'></i></a>
+                                        });" title="{{cbLang('button_logout')}}" class="btn btn-danger btn-flat" style="border-radius: 7px;"><i class='fa fa-power-off'></i></a>
                             </div>
                         </li>
                     </ul>
@@ -91,3 +131,27 @@
         </div>
     </nav>
 </header>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var toggleButton = document.querySelector('.sidebar-toggle');
+
+        toggleButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            this.classList.toggle('rotate');
+        });
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const notificationBell = document.getElementById('notification_bell');
+        const iconNotification = document.getElementById('icon_notification');
+
+        notificationBell.addEventListener('click', function() {
+            iconNotification.classList.add('shake');
+
+            setTimeout(function() {
+                iconNotification.classList.remove('shake');
+            }, 500);
+        });
+    });
+</script>

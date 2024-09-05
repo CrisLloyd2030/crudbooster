@@ -53,11 +53,11 @@
 
     <div style="width:750px;margin:0 auto ">
 
-        <p align="right"><a title='Add Field Setting' class='btn btn-sm btn-primary' href='{{route("SettingsControllerGetAdd")."?group_setting=".$page_title}}'><i
+        <p align="right"><a title='Add Field Setting' class='btn btn-sm btn-primary' style="border-radius: 7px;" href='{{route("SettingsControllerGetAdd")."?group_setting=".$page_title}}'><i
                         class='fa fa-plus'></i> Add Field Setting</a></p>
 
-        <div class="panel panel-default">
-            <div class="panel-heading">
+        <div class="panel panel-default" style="border-radius: 15px;">
+            <div class="panel-heading" style="border-top-left-radius: 15px; border-top-right-radius: 15px;">
                 <i class='fa fa-cog'></i> {{$page_title}}
             </div>
             <div class="panel-body">
@@ -93,43 +93,43 @@
                             <?php
                             switch ($s->content_input_type) {
                                 case 'text':
-                                    echo "<input type='text' class='form-control' name='$s->name' value='$value'/>";
+                                    echo "<input type='text' style='border-radius: 7px;' class='form-control' name='$s->name' value='$value'/>";
                                     break;
                                 case 'number':
-                                    echo "<input type='number' class='form-control' name='$s->name' value='$value'/>";
+                                    echo "<input type='number' style='border-radius: 7px;' class='form-control' name='$s->name' value='$value'/>";
                                     break;
                                 case 'email':
-                                    echo "<input type='email' class='form-control' name='$s->name' value='$value'/>";
+                                    echo "<input type='email' style='border-radius: 7px;' class='form-control' name='$s->name' value='$value'/>";
                                     break;
                                 case 'textarea':
-                                    echo "<textarea name='$s->name' class='form-control'>$value</textarea>";
+                                    echo "<textarea name='$s->name' style='border-radius: 7px;' class='form-control'>$value</textarea>";
                                     break;
                                 case 'wysiwyg':
-                                    echo "<textarea name='$s->name' class='form-control wysiwyg'>$value</textarea>";
+                                    echo "<textarea name='$s->name' style='border-radius: 7px;' class='form-control wysiwyg'>$value</textarea>";
                                     break;
                                 case 'upload':
                                 case 'upload_image':
                                     if ($value) {
                                         echo "<p><a href='".asset($value)."' target='_blank' title='Download the file of $s->label'><i class='fa fa-download'></i> Download the File  of $s->label</a></p>";
-                                        echo "<input type='hidden' name='$s->name' value='$value'/>";
+                                        echo "<input type='hidden' style='border-radius: 7px;' name='$s->name' value='$value'/>";
                                         echo "<div class='pull-right'><a class='btn btn-danger btn-xs' onclick='if(confirm(\"Are you sure want to delete ?\")) location.href=\"".CRUDBooster::mainpath("delete-file-setting?id=$s->id")."\"' title='Click here to delete'><i class='fa fa-trash'></i></a></div>";
                                     } else {
-                                        echo "<input type='file' name='$s->name' class='form-control'/>";
+                                        echo "<input type='file' style='border-radius: 7px;' name='$s->name' class='form-control'/>";
                                     }
                                     echo "<div class='help-block'>File support only jpg,png,gif, Max 10 MB</div>";
                                     break;
                                 case 'upload_file':
                                     if ($value) {
                                         echo "<p><a href='".asset($value)."' target='_blank' title='Download the file of $s->label'><i class='fa fa-download'></i> Download the File  of $s->label</a></p>";
-                                        echo "<input type='hidden' name='$s->name' value='$value'/>";
+                                        echo "<input type='hidden' style='border-radius: 7px;' name='$s->name' value='$value'/>";
                                         echo "<div class='pull-right'><a class='btn btn-danger btn-xs' onclick='if(confirm(\"Are you sure want to delete ?\")) location.href=\"".CRUDBooster::mainpath("delete-file-setting?id=$s->id")."\"' title='Click here to delete'><i class='fa fa-trash'></i></a></div>";
                                     } else {
-                                        echo "<input type='file' name='$s->name' class='form-control'/>";
+                                        echo "<input type='file' style='border-radius: 7px;' name='$s->name' class='form-control'/>";
                                     }
                                     echo "<div class='help-block'>File support only doc,docx,xls,xlsx,ppt,pptx,pdf,zip,rar, Max 20 MB</div>";
                                     break;
                                 case 'datepicker':
-                                    echo "<input type='text' class='datepicker form-control' name='$s->name' value='$value'/>";
+                                    echo "<input type='text' style='border-radius: 7px;' class='datepicker form-control' name='$s->name' value='$value'/>";
                                     break;
                                 case 'radio':
                                     if ($dataenum):
@@ -143,7 +143,7 @@
                                     endif;
                                     break;
                                 case 'select':
-                                    echo "<select name='$s->name' class='form-control'><option value=''>** Please select $s->label</option>";
+                                    echo "<select name='$s->name' style='border-radius: 7px;' class='form-control'><option value=''>** Please select $s->label</option>";
                                     if ($dataenum):
                                         foreach ($dataenum as $enum) {
                                             $selected = ($enum == $value) ? "selected" : "";
@@ -161,7 +161,7 @@
                     </div><!-- /.box-body -->
                     <div class="box-footer">
                         <div class='pull-right'>
-                            <input type='submit' name='submit' value='Save' class='btn btn-success'/>
+                            <input type='submit' name='submit' value='Save' style="border-radius: 7px;" class='btn btn-success'/>
                         </div>
                     </div><!-- /.box-footer-->
                 </form>

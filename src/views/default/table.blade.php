@@ -49,9 +49,10 @@
 <form id='form-table' method='post' action='{{CRUDBooster::mainpath("action-selected")}}'>
     <input type='hidden' name='button_name' value=''/>
     <input type='hidden' name='_token' value='{{csrf_token()}}'/>
-    <table id='table_dashboard' class="table table-hover table-striped table-bordered">
+    <div style="margin:0px 10px 10px 10px; border-radius: 7px; border: 1px solid #ccc;">
+    <table id='table_dashboard' class="table table-hover table-bordered" style="border-radius: 7px; border: solid 0px; overflow: hidden; text-align:center">
         <thead>
-        <tr class="active">
+        <tr class="" style="background-color: transparent;">
             <?php if($button_bulk_action):?>
             <th width='3%'><input type='checkbox' id='checkall'/></th>
             <?php endif;?>
@@ -67,9 +68,9 @@
                 $name = $col['name'];
                 $field = $col['field_with'];
                 $width = (isset($col['width'])) ?$col['width']: "auto";
-		$style = (isset($col['style'])) ?$col['style']: "";
+		        $style = (isset($col['style'])) ?$col['style']: "text-align: center;";
                 $mainpath = trim(CRUDBooster::mainpath(), '/').$build_query;
-                echo "<th width='$width' $style>";
+                echo "<th width='$width' style='$style'>";
                 if (isset($sort_column[$field])) {
                     switch ($sort_column[$field]['sorting']) {
                         case 'asc':
@@ -96,7 +97,7 @@
 
             @if($button_table_action)
                 @if(CRUDBooster::isUpdate() || CRUDBooster::isDelete() || CRUDBooster::isRead())
-                    <th width='{{ isset($button_action_width)? $button_action_width :"auto"}}' style="text-align:right">{{cbLang("action_label")}}</th>
+                    <th width='{{ isset($button_action_width)? $button_action_width :"auto"}}' style="text-align:right; color: #3C8DBC;">{{cbLang("action_label")}}</th>
                 @endif
             @endif
         </tr>
@@ -151,7 +152,7 @@
         <tfoot>
         <tr>
             <?php if($button_bulk_action):?>
-            <th>&nbsp;</th>
+            <th style="border: none;">&nbsp;</th>
             <?php endif;?>
 
             <?php if($show_numbering):?>
@@ -163,29 +164,30 @@
                 if ($col['visible'] === FALSE) continue;
                 $colname = $col['label'];
                 $width = (isset($col['width'])) ?$col['width']: "auto";
-		$style = (isset($col['style'])) ? $col['style']: "";
-                echo "<th width='$width' $style>$colname</th>";
+		        $style = (isset($col['style'])) ? $col['style']: "text-align: center; border:none";
+                echo "<th width='$width' style='$style'>$colname</th>";
             }
             ?>
 
             @if($button_table_action)
                 @if(CRUDBooster::isUpdate() || CRUDBooster::isDelete() || CRUDBooster::isRead())
-                    <th> -</th>
+                    <th style="float: right;"> -</th>
                 @endif
             @endif
         </tr>
         </tfoot>
     </table>
+        </div>
 
 </form><!--END FORM TABLE-->
 
-<div class="col-md-8">{!! urldecode(str_replace("/?","?",$result->appends(Request::all())->render())) !!}</div>
+<div class="col-md-8" style="margin-bottom: 10px;">{!! urldecode(str_replace("/?","?",$result->appends(Request::all())->render())) !!}</div>
 <?php
 $from = $result->count() ? ($result->perPage() * $result->currentPage() - $result->perPage() + 1) : 0;
 $to = $result->perPage() * $result->currentPage() - $result->perPage() + $result->count();
 $total = $result->total();
 ?>
-<div class="col-md-4"><span class="pull-right">{{ cbLang("filter_rows_total") }}
+<div class="col-md-4" style="margin-bottom: 10px;"><span class="pull-right">{{ cbLang("filter_rows_total") }}
         : {{ $from }} {{ cbLang("filter_rows_to") }} {{ $to }} {{ cbLang("filter_rows_of") }} {{ $total }}</span></div>
 
 @if($columns)
@@ -303,7 +305,7 @@ $total = $result->total();
         <!-- MODAL FOR SORTING DATA-->
         <div class="modal fade" tabindex="-1" role="dialog" id='advanced_filter_modal'>
             <div class="modal-dialog modal-lg">
-                <div class="modal-content">
+                <div class="modal-content" style="border-radius: 7px;">
                     <div class="modal-header">
                         <button class="close" aria-label="Close" type="button" data-dismiss="modal">
                             <span aria-hidden="true">×</span></button>
@@ -319,12 +321,12 @@ $total = $result->total();
                                 <div class='row-filter-combo row'>
 
                                     <div class="col-sm-2">
-                                        <strong>{{$col['label']}}</strong>
+                                        <strong style="font-weight: normal;">{{$col['label']}}</strong>
                                     </div>
 
                                     <div class='col-sm-3'>
                                         <select name='filter_column[{{$col["field_with"]}}][type]' data-type='{{$col["type_data"]}}'
-                                                class="filter-combo form-control">
+                                                class="filter-combo form-control" style="border-radius: 7px;">
                                             <option value=''>** {{cbLang("filter_select_operator_type")}}</option>
                                             @if(in_array($col['type_data'],['string','varchar','text','char']))
                                                 <option {{ (CRUDBooster::getTypeFilter($col["field_with"]) == 'like')?"selected":"" }} value='like'>{{cbLang("filter_like")}}</option> @endif
@@ -355,7 +357,7 @@ $total = $result->total();
 
 
                                     <div class='col-sm-5'>
-                                        <input type='text' class='filter-value form-control'
+                                        <input type='text' class='filter-value form-control' style="border-radius: 7px;"
                                                style="{{ (CRUDBooster::getTypeFilter($col["field_with"]) == 'between')?"display:none":"display:block"}}"
                                                disabled name='filter_column[{{$col["field_with"]}}][value]'
                                                value='{{ (!is_array(CRUDBooster::getValueFilter($col["field_with"])))?CRUDBooster::getValueFilter($col["field_with"]):"" }}'>
@@ -383,7 +385,7 @@ $total = $result->total();
                                                     <span class="input-group-addon">{{cbLang("filter_to")}}:</span>
                                                     <input
                                                             {{ (CRUDBooster::getTypeFilter($col["field_with"]) != 'between')?"disabled":"" }}
-                                                            type='text'
+                                                            type='text' style="border-radius: 7px;"
                                                             class='filter-value-between form-control {{ in_array($col["type_data"],["date","datetime","timestamp"]) ? "datepicker" : (in_array($col["type_data"],["time"]) ? "timepicker" : "" )}}'
                                                             {{ in_array($col["type_data"],["date","datetime","timestamp","time"]) ? "readonly": "" }}
                                                             placeholder='{{$col["label"]}} {{cbLang("filter_to")}}'
@@ -399,7 +401,7 @@ $total = $result->total();
 
 
                                     <div class='col-sm-2'>
-                                        <select class='form-control' name='filter_column[{{$col["field_with"]}}][sorting]'>
+                                        <select class='form-control' style="border-radius: 7px;" name='filter_column[{{$col["field_with"]}}][sorting]'>
                                             <option value=''>{{cbLang("filter_sorting")}}</option>
                                             <option {{ (CRUDBooster::getSortingFilter($col["field_with"]) == 'asc')?"selected":"" }} value='asc'>{{cbLang("filter_ascending")}}</option>
                                             <option {{ (CRUDBooster::getSortingFilter($col["field_with"]) == 'desc')?"selected":"" }} value='desc'>{{cbLang("filter_descending")}}</option>
@@ -457,7 +459,7 @@ $total = $result->total();
         <!-- MODAL FOR EXPORT DATA-->
         <div class="modal fade" tabindex="-1" role="dialog" id='export-data'>
             <div class="modal-dialog">
-                <div class="modal-content">
+                <div class="modal-content" style="border-radius: 7px;">
                     <div class="modal-header">
                         <button class="close" aria-label="Close" type="button" data-dismiss="modal">
                             <span aria-hidden="true">×</span></button>
@@ -470,7 +472,7 @@ $total = $result->total();
                         <div class="modal-body">
                             <div class="form-group">
                                 <label>{{cbLang("export_dialog_filename")}}</label>
-                                <input type='text' name='filename' class='form-control' required value='Report {{ $module_name }} - {{date("d M Y")}}'/>
+                                <input type='text' style="border-radius: 7px;" name='filename' class='form-control' required value='Report {{ $module_name }} - {{date("d M Y")}}'/>
                                 <div class='help-block'>
                                     {{cbLang("export_dialog_help_filename")}}
                                 </div>
@@ -478,7 +480,7 @@ $total = $result->total();
 
                             <div class="form-group">
                                 <label>{{cbLang("export_dialog_maxdata")}}</label>
-                                <input type='number' name='limit' class='form-control' required value='100' max="100000" min="1"/>
+                                <input type='number' style="border-radius: 7px;" name='limit' class='form-control' required value='100' max="100000" min="1"/>
                                 <div class='help-block'>{{cbLang("export_dialog_help_maxdata")}}</div>
                             </div>
 
@@ -492,7 +494,7 @@ $total = $result->total();
 
                             <div class="form-group">
                                 <label>{{cbLang("export_dialog_format_export")}}</label>
-                                <select name='fileformat' class='form-control'>
+                                <select name='fileformat' style="border-radius: 7px;" class='form-control'>
                                     <option value='pdf'>PDF</option>
                                     <option value='xls'>Microsoft Excel (xls)</option>
                                     <option value='csv'>CSV</option>
@@ -507,7 +509,7 @@ $total = $result->total();
 
                                 <div class="form-group">
                                     <label>{{cbLang("export_dialog_page_size")}}</label>
-                                    <select class='form-control' name='page_size'>
+                                    <select class='form-control' style="border-radius: 7px;" name='page_size'>
                                         <option <?=($setting->default_paper_size == 'Letter') ? "selected" : ""?> value='Letter'>Letter</option>
                                         <option <?=($setting->default_paper_size == 'Legal') ? "selected" : ""?> value='Legal'>Legal</option>
                                         <option <?=($setting->default_paper_size == 'Ledger') ? "selected" : ""?> value='Ledger'>Ledger</option>
@@ -529,7 +531,7 @@ $total = $result->total();
 
                                 <div class="form-group">
                                     <label>{{cbLang("export_dialog_page_orientation")}}</label>
-                                    <select class='form-control' name='page_orientation'>
+                                    <select class='form-control' style="border-radius: 7px;" name='page_orientation'>
                                         <option value='potrait'>Potrait</option>
                                         <option value='landscape'>Landscape</option>
                                     </select>

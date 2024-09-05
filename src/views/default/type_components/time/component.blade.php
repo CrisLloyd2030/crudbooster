@@ -11,7 +11,7 @@
                 @if(!$disabled)
                     <span class="input-group-addon"><i class='fa fa-clock-o'></i></span>
                 @endif
-                <input type='text' title="{{$form['label']}}"
+                <input type='text' style="border-radius: 7px;" title="{{$form['label']}}"
                        {{$required}} {{$readonly}} {!!$placeholder!!} {{$disabled}} class='form-control notfocus timepicker' name="{{$name}}" id="{{$name}}"
                        readonly value='{{$value}}'/>
             </div>

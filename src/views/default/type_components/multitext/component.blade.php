@@ -8,7 +8,7 @@
     <div class="{{$col_width?:'col-sm-10'}} input_fields_wrap {{$name}}">
 
         <div class="input-group">
-            <input type='text' title="{{$form['label']}}"
+            <input type='text' style="border-radius: 7px;" title="{{$form['label']}}"
                    {{$required}} {{$readonly}} {!!$placeholder!!} {{$disabled}} {{$validation['max']?"maxlength=".$validation['max']:""}} class='form-control {{$name}} first_value'
                    name="{{$name}}[]" id="{{$name}}" value='{{$value}}'/> <span class="input-group-addon" style="padding: 1px;"><button
                         class="add_field_button {{$name}}  btn btn-danger  btn-xs"><i class='fa fa-plus'></i></button></span>

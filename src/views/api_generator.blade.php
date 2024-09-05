@@ -49,7 +49,7 @@
                         });
 
 
-                        $('#input-nama').on('input', function () {
+                        $('#input-name').on('input', function () {
                             var v = $(this).val();
                             if (v) {
                                 v = v.replace(/[^0-9a-z]/gi, '_').toLowerCase();
@@ -101,7 +101,7 @@
                     })
 
                     function load_response() {
-                        var t = $('#combo_tabel').val();
+                        var t = $('#combo_table_name').val();
                         var type = 'list';
                         var tipe_action = $('#tipe_action').val();
                         var no_params = 0;
@@ -172,7 +172,7 @@
                     }
 
                     function load_parameters() {
-                        var t = $('#combo_tabel').val();
+                        var t = $('#combo_table_name').val();
                         var type = 'save_add';
                         var tipe_action = $('#tipe_action').val();
 
@@ -356,7 +356,7 @@
                     function init_data_responses() {
                                 @if($responses)
 
-                        var t = $('#combo_tabel').val();
+                        var t = $('#combo_table_name').val();
                         var type = 'list';
                         var tipe_action = $('#tipe_action').val();
                         var no_params = 0;
@@ -451,7 +451,7 @@
                         init_data_responses();
                         @endif
 
-                        $('#combo_tabel,#tipe_action').change(function () {
+                        $('#combo_table_name,#tipe_action').change(function () {
 
                             load_response();
 
@@ -595,17 +595,17 @@
                     <div class='col-sm-8'>
                         <div class='form-group'>
                             <label>API Name</label>
-                            <input type='text' class='form-control' value='{{$row->nama}}' required name='nama' id='input-nama'/>
+                            <input type='text' style="border-radius: 7px;" class='form-control' value='{{$row->name}}' required name='name' id='input-name'/>
                         </div>
                     </div>
 
                     <div class='col-sm-4'>
                         <div class='form-group'>
                             <label>Table</label>
-                            <select id='combo_tabel' name='tabel' required class='form-control'>
+                            <select id='combo_table_name' name='table_name' required class='form-control' style="border-radius: 7px;">
                                 <option value=''>** Choose a Table</option>
                                 @foreach($tables as $tab)
-                                    <option {{($row->tabel == $tab)?"selected":""}} value='{{$tab}}'>{{$tab}}</option>
+                                    <option {{($row->table_name == $tab)?"selected":""}} value='{{$tab}}'>{{$tab}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -617,21 +617,21 @@
                         <div class='form-group'>
                             <label>API Slug</label>
                             <div class='input-group'>
-                                <span class="input-group-addon" id="basic-addon1" style="background:#eeeeee">{{url("api")}}/</span>
-                                <input type='text' class='form-control' value='{{$row->permalink}}' required name='permalink' id='input-permalink'/>
+                                <span class="input-group-addon" id="basic-addon1" style="background:#eeeeee; border-top-left-radius: 7px; border-bottom-left-radius: 7px;">{{url("api")}}/</span>
+                                <input type='text' style="border-top-right-radius: 7px; border-bottom-right-radius: 7px;" class='form-control' value='{{$row->permalink}}' required name='permalink' id='input-permalink'/>
                             </div>
                         </div>
                     </div>
                     <div class='col-sm-2'>
                         <div class='form-group'>
                             <label>Action Type</label>
-                            <select id='tipe_action' name='aksi' required class='form-control'>
+                            <select id='tipe_action' name='action' style="border-radius: 7px;" required class='form-control'>
                                 <option value=''>** Select Action</option>
-                                <option value='list' {{ ($row->aksi == 'list')?"selected":"" }} >LISTING</option>
-                                <option value='detail' {{ ($row->aksi == 'detail')?"selected":"" }}>DETAIL / READ</option>
-                                <option value='save_add' {{ ($row->aksi == 'save_add')?"selected":"" }}>CREATE / ADD</option>
-                                <option value='save_edit' {{ ($row->aksi == 'save_edit')?"selected":"" }}>UPDATE</option>
-                                <option value='delete' {{ ($row->aksi == 'delete')?"selected":"" }}>DELETE</option>
+                                <option value='list' {{ ($row->action == 'list')?"selected":"" }} >LISTING</option>
+                                <option value='detail' {{ ($row->action == 'detail')?"selected":"" }}>DETAIL / READ</option>
+                                <option value='save_add' {{ ($row->action == 'save_add')?"selected":"" }}>CREATE / ADD</option>
+                                <option value='save_edit' {{ ($row->action == 'save_edit')?"selected":"" }}>UPDATE</option>
+                                <option value='delete' {{ ($row->action == 'delete')?"selected":"" }}>DELETE</option>
                             </select>
                         </div>
                     </div>
@@ -679,8 +679,8 @@
                         <tfoot style="display:none">
                         <tr>
                             <td>#</td>
-                            <td width="20%"><input class='form-control' name='params_name[]' type='text'/></td>
-                            <td width="20%"><select class='form-control' name='params_type[]'>
+                            <td width="20%"><input class='form-control' style="border-radius: 7px;" name='params_name[]' type='text'/></td>
+                            <td width="20%"><select class='form-control' style="border-radius: 7px;" name='params_type[]'>
                                     <optgroup label='Common Validation'>
                                         <option value='string'>String</option>
                                         <option value='integer'>Integer</option>
@@ -718,12 +718,12 @@
                                         <option value='ref'>Child Table References</option>
                                     </optgroup>
                                 </select></td>
-                            <td><input class='form-control' type='text' name='params_config[]'></td>
-                            <td><select class='form-control params_required' name='params_required[]'>
+                            <td><input class='form-control' style="border-radius: 7px;" type='text' name='params_config[]'></td>
+                            <td><select class='form-control params_required' style="border-radius: 7px;" name='params_required[]'>
                                     <option value='1'>YES</option>
                                     <option value='0'>NO</option>
                                 </select></td>
-                            <td><select class='form-control params_used' name='params_used[]'>
+                            <td><select class='form-control params_used' style="border-radius: 7px;" name='params_used[]'>
                                     <option value='1'>YES</option>
                                     <option value='0'>NO</option>
                                 </select></td>
@@ -737,7 +737,7 @@
                     </div>
                 </div>
 
-                <div id="response-wrapper" style="display: {{ isset($row)&&in_array($row->aksi,['save_edit','delete'])?"none":"block" }}">
+                <div id="response-wrapper" style="display: {{ isset($row)&&in_array($row->action,['save_edit','delete'])?"none":"block" }}">
                     <div class='form-group'>
                         <div class='clearfix'>
                             <label><i class='fa fa-cog'></i> Response</label>
@@ -763,11 +763,11 @@
                                 <tfoot style="display:none">
                                 <tr class='tr-additional'>
                                     <td>#</td>
-                                    <td width="20%"><input placeholder='E.g : grand_total' name='responses_name[]' class='form-control' type='text'/>
+                                    <td width="20%"><input placeholder='E.g : grand_total' style="border-radius: 7px;" name='responses_name[]' class='form-control' type='text'/>
                                         <small>Enter alias name</small>
                                     </td>
                                     <td>
-                                        <select class='form-control' name='responses_type[]'>
+                                        <select class='form-control' style="border-radius: 7px;" name='responses_type[]'>
                                             <option value='integer'>Integer</option>
                                             <option value='boolean'>Boolean</option>
                                             <option value='string'>String</option>
@@ -779,10 +779,10 @@
                                         </select>
                                     </td>
                                     <td><input placeholder="E.g : select sum(total) from order_detail where id_order = order.id" name='responses_subquery[]'
-                                               class='form-control' type='text'>
+                                               class='form-control' style="border-radius: 7px;" type='text'>
                                         <small>Enter sub query without alias name</small>
                                     </td>
-                                    <td><select class='form-control responses_used' name='responses_used[]'>
+                                    <td><select class='form-control responses_used' style="border-radius: 7px;" name='responses_used[]'>
                                             <option value='1'>YES</option>
                                             <option value='0'>NO</option>
                                         </select></td>
@@ -797,7 +797,7 @@
 
                 <div class='form-group'>
                     <label>API Description</label>
-                    <textarea name='keterangan' rows='3' class='form-control wysiwyg' placeholder='Optional'>{{$row->keterangan}}</textarea>
+                    <textarea name='information' rows='3' style="border-radius: 7px;" class='form-control wysiwyg' placeholder='Optional'>{{$row->information}}</textarea>
                 </div>
 
                 <div class='form-group'>

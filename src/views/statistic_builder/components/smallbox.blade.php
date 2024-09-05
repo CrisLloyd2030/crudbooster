@@ -1,7 +1,20 @@
 @if($command=='layout')
+
+<style>
+    .small-box {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative;
+    }
+
+    .small-box:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
+    }
+</style>
+
     <div id='{{$componentID}}' class='border-box'>
 
-        <div class="small-box [color]">
+        <div class="small-box [color]" style="border-radius: 15px;">
             <div class='inner inner-box'>
                 <h3>[sql]</h3>
                 <p>[name]</p>
@@ -9,7 +22,7 @@
             <div class="icon">
                 <i class="ion [icon]"></i>
             </div>
-            <a href="[link]" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="[link]" class="small-box-footer" style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
 
         <div class='action pull-right'>

@@ -28,7 +28,7 @@ class PrivilegesController extends CBController
         $this->col[] = [
             "label" => "Superadmin",
             "name" => "is_superadmin",
-            'callback_php' => '($row->is_superadmin)?"<span class=\"label label-success\">Superadmin</span>":"<span class=\"label label-default\">Standard</span>"',
+            'callback_php' => '($row->is_superadmin)?"<span class=\"label label-success\" style=\"border-radius: 7px\">Superadmin</span>":"<span style=\"border-radius: 7px\" class=\"label label-default\">Standard</span>"',
         ];
 
         $this->form = [];

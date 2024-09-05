@@ -7,9 +7,9 @@
 
     <div class="{{$col_width?:'col-sm-10'}}">
         <div class="input-group">
-            <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+            <span class="input-group-addon" style="border-top-left-radius: 7px; border-bottom-left-radius: 7px;"><i class="fa fa-envelope"></i></span>
             <input type="email" name="{{$name}}" style="display: none">
-            <input type='email' title="{{$form['label']}}"
+            <input type='email' style="border-top-right-radius: 7px; border-bottom-right-radius: 7px;" title="{{$form['label']}}"
                    {{$required}} {{$readonly}} {!!$placeholder!!} {{$disabled}} {{$validation['max']?"maxlength=".$validation['max']:""}} class='form-control'
                    name="{{$name}}" id="{{$name}}" value='{{$value}}'/>
         </div>

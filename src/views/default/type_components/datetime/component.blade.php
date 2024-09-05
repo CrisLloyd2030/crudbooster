@@ -9,10 +9,10 @@
     <div class="{{$col_width?:'col-sm-10'}}">
         <div class="input-group">
 
-            <span class="input-group-addon"><a href='javascript:void(0)' onclick='$("#{{$name}}").data("daterangepicker").toggle();'><i
+            <span class="input-group-addon" style="border-radius: 7px;"><a href='javascript:void(0)' onclick='$("#{{$name}}").data("daterangepicker").toggle();'><i
                             class='fa fa-calendar'></i></a></span>
 
-            <input type='text' title="{{$form['label']}}" readonly
+            <input type='text' style="border-radius: 7px;" title="{{$form['label']}}" readonly
                    {{$required}} {{$readonly}} {!!$placeholder!!} {{$disabled}} class='form-control notfocus input_datetime' name="{{$name}}" id="{{$name}}"
                    value='{{$value}}' />
         </div>

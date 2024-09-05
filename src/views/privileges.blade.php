@@ -2,17 +2,14 @@
 
 @section('content')
 
-    <div style="width:750px;margin:0 auto ">
-
+    <div style="width:800px;margin:0 auto ">
 
         @if(CRUDBooster::getCurrentMethod() != 'getProfile')
             <p><a href='{{CRUDBooster::mainpath()}}'>{{cbLang("form_back_to_list",['module'=>CRUDBooster::getCurrentModule()->name])}}</a></p>
     @endif
 
-
-
     <!-- Box -->
-        <div class="box box-primary">
+        <div class="box box-primary" style="border-radius: 15px;">
             <div class="box-header with-border">
                 <h3 class="box-title">{{ $page_title }}</h3>
                 <div class="box-tools">
@@ -22,12 +19,12 @@
             <form method='post' action='{{ (@$row->id)?route("PrivilegesControllerPostEditSave")."/$row->id":route("PrivilegesControllerPostAddSave") }}'>
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="box-body">
-                    <div class="alert alert-info">
-                        <strong>Note:</strong> To show the menu you have to create a menu at Menu Management
+                    <div class="alert call-info" style="border-radius: 10px; background-color: ghostwhite">
+                        <strong> <i class="glyphicon glyphicon-info-sign"></i> Note:</strong> To show the menu you have to create a menu at Menu Management
                     </div>
                     <div class='form-group'>
                         <label>{{cbLang('privileges_name')}}</label>
-                        <input type='text' class='form-control' name='name' required value='{{ @$row->name }}'/>
+                        <input type='text' style="border-radius: 7px;" class='form-control' name='name' required value='{{ @$row->name }}'/>
                         <div class="text-danger">{{ $errors->first('name') }}</div>
                     </div>
 
@@ -44,7 +41,7 @@
 
                     <div class='form-group'>
                         <label>{{cbLang('chose_theme_color')}}</label>
-                        <select name='theme_color' class='form-control' required>
+                        <select name='theme_color' class='form-control' style="border-radius: 7px;" required>
                             <option value=''>{{cbLang('chose_theme_color_select')}}</option>
                             <?php
                             $skins = array(
@@ -180,10 +177,10 @@
                     </div>
 
                 </div><!-- /.box-body -->
-                <div class="box-footer" align="right">
+                <div class="box-footer" align="right" style="border-radius: 15px;">
                     <button type='button' onclick="location.href='{{CRUDBooster::mainpath()}}'"
-                            class='btn btn-default'>{{cbLang("button_cancel")}}</button>
-                    <button type='submit' class='btn btn-primary'><i class='fa fa-save'></i> {{cbLang("button_save")}}</button>
+                            style="border-radius: 7px;" class='btn btn-default'>{{cbLang("button_cancel")}}</button>
+                    <button type='submit' style="border-radius: 7px;" class='btn btn-primary'><i class='fa fa-save'></i> {{cbLang("button_save")}}</button>
                 </div><!-- /.box-footer-->
         </div><!-- /.box -->
 

@@ -1,3 +1,19 @@
+@php
+use Illuminate\Support\Str;
+@endphp
+
+<style>
+    .main-sidebar {
+        height: 100vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+    }
+</style>
+
 <!-- Left side column. contains the sidebar -->
 <aside class="main-sidebar">
 
@@ -7,7 +23,7 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel">
             <div class="pull-{{ cbLang('left') }} image">
-                <img src="{{ CRUDBooster::myPhoto() }}" class="img-circle" alt="{{ cbLang('user_image') }}"/>
+                <img src="{{ CRUDBooster::myPhoto() }}" class="img-circle" style="height: 45px;" alt="{{ cbLang('user_image') }}"/>
             </div>
             <div class="pull-{{ cbLang('left') }} info">
                 <p>{{ CRUDBooster::myName() }}</p>

@@ -21,14 +21,14 @@
                     <div class="col-sm-12">
                         <div class="form-group">
                             <label>Title Field Candidate</label>
-                            <input type="text" name="title_field" value="{{$cb_title_field}}" class='form-control'>
+                            <input style="border-radius: 7px;" type="text" name="title_field" value="{{$cb_title_field}}" class='form-control'>
                         </div>
                     </div>
 
                     <div class="col-sm-5">
                         <div class="form-group">
                             <label>Limit Data</label>
-                            <input type="number" name="limit" value="{{$cb_limit}}" class='form-control'>
+                            <input style="border-radius: 7px;" type="number" name="limit" value="{{$cb_limit}}" class='form-control'>
                         </div>
                     </div>
 
@@ -46,7 +46,7 @@
                                 $orderby = $cb_orderby;
                             }
                             ?>
-                            <input type="text" name="orderby" value="{{$orderby}}" class='form-control'>
+                            <input style="border-radius: 7px;" type="text" name="orderby" value="{{$orderby}}" class='form-control'>
                             <div class="help-block">E.g : column_name,desc</div>
                         </div>
                     </div>

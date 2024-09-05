@@ -1,42 +1,47 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>{{ ($page_title)?get_setting('appname').': '.strip_tags($page_title):"Admin Area" }}</title>
-    <meta name="csrf-token" content="{{ csrf_token() }}"/>
-    <meta name='generator' content='CRUDBooster {{ \crocodicstudio\crudbooster\commands\CrudboosterVersionCommand::$version }}'/>
-    <meta name='robots' content='noindex,nofollow'/>
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <meta name='generator' content='CRUDBooster {{ \crocodicstudio\crudbooster\commands\CrudboosterVersionCommand::$version }}' />
+    <meta name='robots' content='noindex,nofollow' />
     <link rel="shortcut icon"
-          href="{{ CRUDBooster::getSetting('favicon')?asset(CRUDBooster::getSetting('favicon')):asset('vendor/crudbooster/assets/logo_crudbooster.png') }}">
+        href="{{ CRUDBooster::getSetting('favicon')?asset(CRUDBooster::getSetting('favicon')):asset('vendor/crudbooster/assets/logo_crudbooster.png') }}">
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 3.4.1 -->
-    <link href="{{ asset("vendor/crudbooster/assets/adminlte/bootstrap/css/bootstrap.min.css") }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset("vendor/crudbooster/assets/adminlte/bootstrap/css/bootstrap.min.css") }}" rel="stylesheet" type="text/css" />
     <!-- Font Awesome Icons -->
-    <link href="{{asset("vendor/crudbooster/assets/adminlte/font-awesome/css")}}/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="{{asset("vendor/crudbooster/assets/adminlte/font-awesome/css")}}/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <!-- Ionicons -->
-    <link href="{{asset("vendor/crudbooster/ionic/css/ionicons.min.css")}}" rel="stylesheet" type="text/css"/>
+    <link href="{{asset("vendor/crudbooster/ionic/css/ionicons.min.css")}}" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
-    <link href="{{ asset("vendor/crudbooster/assets/adminlte/dist/css/AdminLTE.min.css")}}" rel="stylesheet" type="text/css"/>
-    <link href="{{ asset("vendor/crudbooster/assets/adminlte/dist/css/skins/_all-skins.min.css")}}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset("vendor/crudbooster/assets/adminlte/dist/css/AdminLTE.min.css")}}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset("vendor/crudbooster/assets/adminlte/dist/css/skins/_all-skins.min.css")}}" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
     <!-- support rtl-->
     @if (in_array(App::getLocale(), ['ar', 'fa']))
-        <link rel="stylesheet" href="//cdn.rawgit.com/morteza/bootstrap-rtl/v3.3.4/dist/css/bootstrap-rtl.min.css">
-        <link href="{{ asset("vendor/crudbooster/assets/rtl.css")}}" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="//cdn.rawgit.com/morteza/bootstrap-rtl/v3.3.4/dist/css/bootstrap-rtl.min.css">
+    <link href="{{ asset("vendor/crudbooster/assets/rtl.css")}}" rel="stylesheet" type="text/css" />
     @endif
 
-    <link rel='stylesheet' href='{{asset("vendor/crudbooster/assets/css/main.css") }}'/>
+    <link rel='stylesheet' href='{{asset("vendor/crudbooster/assets/css/main.css") }}' />
 
     <!-- load css -->
     <style type="text/css">
-        @if($style_css)
-            {!! $style_css !!}
+        @if($style_css) {
+            ! ! $style_css ! !
+        }
+
         @endif
     </style>
     @if($load_css)
-        @foreach($load_css as $css)
-            <link href="{{$css}}" rel="stylesheet" type="text/css"/>
-        @endforeach
+    @foreach($load_css as $css)
+    <link href="{{$css}}" rel="stylesheet" type="text/css" />
+    @endforeach
     @endif
 
     <style type="text/css">
@@ -62,11 +67,13 @@
             box-shadow: 0px -5px 10px #cccccc
         }
 
-        .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+        .nav-tabs>li.active>a,
+        .nav-tabs>li.active>a:focus,
+        .nav-tabs>li.active>a:hover {
             border: none;
         }
 
-        .nav-tabs > li > a {
+        .nav-tabs>li>a {
             border: none;
         }
 
@@ -75,154 +82,227 @@
             padding: 0 0 0 0;
         }
 
-        .form-group > label:first-child {
-            display: block
+        .form-group>label:first-child {
+            display: block;
+            font-weight: normal;
         }
 
-        #table_dashboard.table-bordered, #table_dashboard.table-bordered thead tr th, #table_dashboard.table-bordered tbody tr td {
+        #table_dashboard.table-bordered,
+        #table_dashboard.table-bordered thead tr th,
+        #table_dashboard.table-bordered tbody tr td {
             border: 1px solid #bbbbbb !important;
+        }
+
+        .call-success {
+            background-color: white;
+            border-left: 5px solid #28a745;
+            margin-bottom: 10px;
+            border-top: 0px;
+            border-bottom: 0px;
+            border-right: 0px;
+            padding: 15px;
+            color: #28a745;
+            box-shadow: 1px 7px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .call-danger {
+            background-color: white;
+            border-left: 5px solid #dc3545;
+            margin-bottom: 10px;
+            border-top: 0px;
+            border-bottom: 0px;
+            border-right: 0px;
+            padding: 15px;
+            color: #dc3545;
+            box-shadow: 1px 7px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .call-warning {
+            background-color: white;
+            border-left: 5px solid #F39C12;
+            margin-bottom: 10px;
+            border-top: 0px;
+            border-bottom: 0px;
+            border-right: 0px;
+            padding: 15px;
+            color: #F39C12;
+            box-shadow: 1px 7px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .call-info:hover{
+            transform: translateY(-8px);
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
+        }
+
+        .call-info {
+            background-color: white;
+            border-left: 5px solid #00C0EF;
+            margin-bottom: 10px;
+            border-top: 0px;
+            border-bottom: 0px;
+            border-right: 0px;
+            padding: 15px;
+            color: #00C0EF;
+            box-shadow: 1px 7px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .call-info:hover, 
+        .call-warning:hover, 
+        .call-danger:hover, 
+        .call-success:hover{
+            transform: translateY(-8px);
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
+        }
+
+        .panel{ 
+            box-shadow: 2px 5px 7px rgba(0, 0, 0, 0.2);
         }
     </style>
 
     @stack('head')
 </head>
+
 <body class="@php echo (Session::get('theme_color'))?:'skin-blue'; echo ' '; echo config('crudbooster.ADMIN_LAYOUT'); @endphp {{($sidebar_mode)?:''}}">
-<div id='app' class="wrapper">
+    <div id='app' class="wrapper">
 
-    <!-- Header -->
-@include('crudbooster::header')
+        <!-- Header -->
+        @include('crudbooster::header')
 
-<!-- Sidebar -->
-@include('crudbooster::sidebar')
+        <!-- Sidebar -->
+        @include('crudbooster::sidebar')
 
-<!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <div style="margin: 50px 0px 0px 0px;">
 
-        <section class="content-header">
-            <?php
-            $module = CRUDBooster::getCurrentModule();
-            ?>
-            @if($module)
-                <h1>
-                    <!--Now you can define $page_icon alongside $page_tite for custom forms to follow CRUDBooster theme style -->
-                    <i class='{!! ($page_icon)?:$module->icon !!}'></i> {!! ucwords(($page_title)?:$module->name) !!} &nbsp;&nbsp;
+                <section class="content-header">
+                    <?php
+                    $module = CRUDBooster::getCurrentModule();
+                    ?>
+                    @if($module)
+                    <h1>
+                        <!--Now you can define $page_icon alongside $page_tite for custom forms to follow CRUDBooster theme style -->
+                        <i class='{!! ($page_icon)?:$module->icon !!}' style="font-size: smaller;"></i> <span style="font-size: smaller;">{!! ucwords(($page_title)?:$module->name) !!} </span> &nbsp;&nbsp;
 
-                    <!--START BUTTON -->
+                        <!--START BUTTON -->
 
-                    @if(CRUDBooster::getCurrentMethod() == 'getIndex')
+                        @if(CRUDBooster::getCurrentMethod() == 'getIndex')
                         @if($button_show)
-                            <a href="{{ CRUDBooster::mainpath().'?'.http_build_query(Request::all()) }}" id='btn_show_data' class="btn btn-sm btn-primary"
-                               title="{{cbLang('action_show_data')}}">
-                                <i class="fa fa-table"></i> {{cbLang('action_show_data')}}
-                            </a>
+                        <a href="{{ CRUDBooster::mainpath().'?'.http_build_query(Request::all()) }}" style="border-radius: 8px;" id='btn_show_data' class="btn btn-sm btn-primary"
+                            title="{{cbLang('action_show_data')}}">
+                            <i class="fa fa-table"></i> {{cbLang('action_show_data')}}
+                        </a>
                         @endif
 
                         @if($button_add && CRUDBooster::isCreate())
-                            <a href="{{ CRUDBooster::mainpath('add').'?return_url='.urlencode(Request::fullUrl()).'&parent_id='.g('parent_id').'&parent_field='.$parent_field }}"
-                               id='btn_add_new_data' class="btn btn-sm btn-success" title="{{cbLang('action_add_data')}}">
-                                <i class="fa fa-plus-circle"></i> {{cbLang('action_add_data')}}
-                            </a>
+                        <a href="{{ CRUDBooster::mainpath('add').'?return_url='.urlencode(Request::fullUrl()).'&parent_id='.g('parent_id').'&parent_field='.$parent_field }}"
+                            id='btn_add_new_data' style="border-radius: 8px;" class="btn btn-sm btn-success" title="{{cbLang('action_add_data')}}">
+                            <i class="fa fa-plus-circle"></i> {{cbLang('action_add_data')}}
+                        </a>
                         @endif
-                    @endif
+                        @endif
 
 
-                    @if($button_export && CRUDBooster::getCurrentMethod() == 'getIndex')
+                        @if($button_export && CRUDBooster::getCurrentMethod() == 'getIndex')
                         <a href="javascript:void(0)" id='btn_export_data' data-url-parameter='{{$build_query}}' title='Export Data'
-                           class="btn btn-sm btn-primary btn-export-data">
+                            class="btn btn-sm btn-primary btn-export-data" style="border-radius: 8px;">
                             <i class="fa fa-upload"></i> {{cbLang("button_export")}}
                         </a>
-                    @endif
+                        @endif
 
-                    @if($button_import && CRUDBooster::getCurrentMethod() == 'getIndex')
-                        <a href="{{ CRUDBooster::mainpath('import-data') }}" id='btn_import_data' data-url-parameter='{{$build_query}}' title='Import Data'
-                           class="btn btn-sm btn-primary btn-import-data">
+                        @if($button_import && CRUDBooster::getCurrentMethod() == 'getIndex')
+                        <a href="{{ CRUDBooster::mainpath('import-data') }}" style="border-radius: 8px;" id='btn_import_data' data-url-parameter='{{$build_query}}' title='Import Data'
+                            class="btn btn-sm btn-primary btn-import-data">
                             <i class="fa fa-download"></i> {{cbLang("button_import")}}
                         </a>
-                    @endif
+                        @endif
 
-                <!--ADD ACTIon-->
-                    @if(!empty($index_button))
+                        <!--ADD ACTIon-->
+                        @if(!empty($index_button))
 
                         @foreach($index_button as $ib)
-                            <a href='{{$ib["url"]}}' id='{{str_slug($ib["label"])}}' class='btn {{($ib['color'])?'btn-'.$ib['color']:'btn-primary'}} btn-sm'
-                               @if($ib['onClick']) onClick='return {{$ib["onClick"]}}' @endif
-                               @if($ib['onMouseOver']) onMouseOver='return {{$ib["onMouseOver"]}}' @endif
-                               @if($ib['onMouseOut']) onMouseOut='return {{$ib["onMouseOut"]}}' @endif
-                               @if($ib['onKeyDown']) onKeyDown='return {{$ib["onKeyDown"]}}' @endif
-                               @if($ib['onLoad']) onLoad='return {{$ib["onLoad"]}}' @endif
-                            >
-                                <i class='{{$ib["icon"]}}'></i> {{$ib["label"]}}
-                            </a>
-                    @endforeach
-                @endif
-                <!-- END BUTTON -->
-                </h1>
+                        <a href='{{$ib["url"]}}' id='{{str_slug($ib["label"])}}' style="border-radius: 8px;" class='btn {{($ib['color'])?'btn-'.$ib['color']:'btn-primary'}} btn-sm'
+                            @if($ib['onClick']) onClick='return {{$ib["onClick"]}}' @endif
+                            @if($ib['onMouseOver']) onMouseOver='return {{$ib["onMouseOver"]}}' @endif
+                            @if($ib['onMouseOut']) onMouseOut='return {{$ib["onMouseOut"]}}' @endif
+                            @if($ib['onKeyDown']) onKeyDown='return {{$ib["onKeyDown"]}}' @endif
+                            @if($ib['onLoad']) onLoad='return {{$ib["onLoad"]}}' @endif>
+                            <i class='{{$ib["icon"]}}'></i> {{$ib["label"]}}
+                        </a>
+                        @endforeach
+                        @endif
+                        <!-- END BUTTON -->
+                    </h1>
 
 
-                <ol class="breadcrumb">
-                    <li><a href="{{CRUDBooster::adminPath()}}"><i class="fa fa-dashboard"></i> {{ cbLang('home') }}</a></li>
-                    <li class="active">{{$module->name}}</li>
-                </ol>
-            @else
-                <h1>{{Session::get('appname')}}
-                    <small> {{ cbLang('text_dashboard') }} </small>
-                </h1>
-            @endif
-        </section>
+                    <ol class="breadcrumb">
+                        <li><a href="{{CRUDBooster::adminPath()}}"><i class="fa fa-dashboard"></i> {{ cbLang('home') }}</a></li>
+                        <li class="active">{{$module->name}}</li>
+                    </ol>
+                    @else
+                    <h1>{{Session::get('appname')}}
+                        <small> {{ cbLang('text_dashboard') }} </small>
+                    </h1>
+                    @endif
+                </section>
+            </div>
 
 
-        <!-- Main content -->
-        <section id='content_section' class="content">
+            <!-- Main content -->
+            <section id='content_section' class="content">
 
-            @if(@$alerts)
+                @if(@$alerts)
                 @foreach(@$alerts as $alert)
-                    <div class='callout callout-{{$alert["type"]}}'>
-                        {!! $alert['message'] !!}
-                    </div>
+                <div class='callout call-{{$alert["type"]}}' style='border-radius: 10px;'>
+                    {!! $alert['message'] !!}
+                </div>
                 @endforeach
-            @endif
+                @endif
 
-
-            @if (Session::get('message')!='')
-                <div class='alert alert-{{ Session::get("message_type") }}'>
+                @if (Session::get('message')!='')
+                <div class='alert call-{{ Session::get("message_type", 'info') }}' style='border-radius: 10px;'>
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                     <h4><i class="icon fa fa-info"></i> {{ cbLang("alert_".Session::get("message_type")) }}</h4>
                     {!!Session::get('message')!!}
                 </div>
-            @endif
+                @endif
+
+                <!-- Your Page Content Here -->
+                @yield('content')
+            </section><!-- /.content -->
+        </div><!-- /.content-wrapper -->
+
+        <!-- Footer -->
+        @include('crudbooster::footer')
+
+    </div><!-- ./wrapper -->
 
 
+    @include('crudbooster::admin_template_plugins')
 
-        <!-- Your Page Content Here -->
-            @yield('content')
-        </section><!-- /.content -->
-    </div><!-- /.content-wrapper -->
-
-    <!-- Footer -->
-    @include('crudbooster::footer')
-
-</div><!-- ./wrapper -->
-
-
-@include('crudbooster::admin_template_plugins')
-
-<!-- load js -->
-@if($load_js)
+    <!-- load js -->
+    @if($load_js)
     @foreach($load_js as $js)
-        <script src="{{$js}}"></script>
+    <script src="{{$js}}"></script>
     @endforeach
-@endif
-<script type="text/javascript">
-    var site_url = "{{url('/')}}";
-    @if($script_js)
-        {!! $script_js !!}
     @endif
-</script>
+    <script type="text/javascript">
+        var site_url = "{{url('/')}}";
+        @if($script_js) {
+            !!$script_js!!
+        }
+        @endif
+    </script>
 
-@stack('bottom')
+    @stack('bottom')
 
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
+    <!-- Optionally, you can add Slimscroll and FastClick plugins.
       Both of these plugins are recommended to enhance the
       user experience -->
 </body>
+
 </html>

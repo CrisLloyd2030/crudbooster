@@ -21,13 +21,13 @@ $asset_already[] = $type;
     <style type="text/css">
         #table-detail tr td:first-child {
             font-weight: bold;
-            width: 25%;
+            width: 20%;
         }
     </style>
 @endpush
 
 <div class='table-responsive'>
-    <table id='table-detail' class='table table-striped'>
+    <table id='table-detail' class='table'>
 
         <?php
         foreach($forms as $index=>$form):
@@ -82,8 +82,8 @@ $asset_already[] = $type;
                 @include('crudbooster::default.type_components.'.$type.'.component_detail')
             @else
                 <tr>
-                    <td>{{$form['label']}}</td>
-                    <td>@include('crudbooster::default.type_components.'.$type.'.component_detail')</td>
+                    <td style="font-weight: 600; border-color: lightgray; border-bottom: 1px solid lightgray">{{$form['label']}} :</td>
+                    <td style="border-color: lightgray; border-bottom: 1px solid lightgray">@include('crudbooster::default.type_components.'.$type.'.component_detail')</td>
                 </tr>
             @endif
         @elseif(file_exists($user_location))
@@ -92,8 +92,8 @@ $asset_already[] = $type;
                 @include('vendor.crudbooster.type_components.'.$type.'.component_detail')
             @else
                 <tr>
-                    <td>{{$form['label']}}</td>
-                    <td>@include('vendor.crudbooster.type_components.'.$type.'.component_detail')</td>
+                    <td style="font-weight: 600; border-color: lightgray; border-bottom: 1px solid lightgray">{{$form['label']}} :</td>
+                    <td style="border-color: lightgray; border-bottom: 1px solid lightgray">@include('vendor.crudbooster.type_components.'.$type.'.component_detail')</td>
                 </tr>
             @endif
         @else

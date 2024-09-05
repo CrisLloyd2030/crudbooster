@@ -125,7 +125,7 @@
     </label>
 
     <div class="{{$col_width?:'col-sm-10'}}">
-        <select style='width:100%' class='form-control' id="{{$name}}"
+        <select style='width:100%; border-radius: 7px;' class='form-control' id="{{$name}}"
                 {{$required}} {{$readonly}} {!!$placeholder!!} {{$disabled}} name="{{$name}}{{($form['relationship_table'])?'[]':''}}" {{ ($form['relationship_table'])?'multiple="multiple"':'' }} >
             @if($form['dataenum'])
                 <option value=''>{{cbLang('text_prefix_option')}} {{$form['label']}}</option>

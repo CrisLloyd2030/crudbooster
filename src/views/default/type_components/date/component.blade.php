@@ -8,8 +8,8 @@
 
     <div class="{{$col_width?:'col-sm-10'}}">
         <div class="input-group">
-            <span class="input-group-addon open-datetimepicker"><a><i class='fa fa-calendar '></i></a></span>
-            <input type='text' title="{{$form['label']}}" readonly
+            <span class="input-group-addon open-datetimepicker" style="border-top-left-radius: 7px; border-bottom-left-radius: 7px;"><a><i class='fa fa-calendar '></i></a></span>
+            <input type='text' style="border-top-right-radius: 7px; border-bottom-right-radius: 7px;" title="{{$form['label']}}" readonly
                    {{$required}} {{$readonly}} {!!$placeholder!!} {{$disabled}} class='form-control notfocus input_date' name="{{$name}}" id="{{$name}}"
                    value='{{$value}}'/>
         </div>
