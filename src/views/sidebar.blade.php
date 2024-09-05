@@ -1,6 +1,6 @@
-@php
+<?php
 use Illuminate\Support\Str;
-@endphp
+?>
 
 <style>
     .main-sidebar {
